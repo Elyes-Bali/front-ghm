@@ -1,0 +1,186 @@
+<div [ngClass]="status ? 'toggled' : ''" class="d-flex" id="wrapper">
+  <!-- Sidebar -->
+  <div class="bg-white" id="sidebar-wrapper">
+    <div
+      class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"
+    >
+      <i class="fas fa-user-secret me-2"></i>Admin
+    </div>
+    <div class="list-group list-group-flush my-3">
+     <a *ngIf="isLoggedIn && isUserRoleAdmin()"
+      href="/listUser"
+      class="list-group-item list-group-item-action bg-transparent second-text active"
+      ><i class="fas fa-user me-2"></i>Users</a
+    >
+    <a *ngIf="isLoggedIn && isUserRoleAdmin()"
+      href="/project"
+      class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+      ><i class="fas fa-area-chart"></i> Projects</a
+    >
+    <a *ngIf="isLoggedIn && isUserRoleManager()"
+      href="/task"
+      class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+      ><i class="fas fa-shopping-cart me-2"></i>Tasks</a
+    >
+    <a
+        *ngIf="isLoggedIn && isUserRoleManager()"
+        href="/alltasks"
+        class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+        ><i class="fas fa-shopping-cart me-2"></i>All Tasks</a
+      >
+    <a *ngIf="isLoggedIn && isUserRoleEmployer()"
+    href="/mytask"
+    class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+    ><i class="fas fa-shopping-cart me-2"></i>My Tasks</a
+  >
+      <hr />
+      <h4 class="text-center">Our Technologies</h4>
+      <a
+        class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+        >Angular</a
+      >
+      <a
+        class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+        >React Js</a
+      >
+      <a
+        class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+        >C#</a
+      >
+      <a
+        class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+        >C++</a
+      >
+      <a
+        class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+        >Machine Learning (AI)</a
+      >
+      <a
+        class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+      >
+        Flutter</a
+      >
+      <a
+        class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+        >DevOps</a
+      >
+    </div>
+  </div>
+  <!-- /#sidebar-wrapper -->
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
+      <div class="d-flex align-items-center">
+        <i
+          class="fas fa-align-left primary-text fs-4 me-3"
+          (click)="addToggle()"
+          id="menu-toggle"
+        ></i>
+        <h2 class="fs-2 m-0">Dashboard</h2>
+      </div>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </nav>
+    <div class="container-fluid px-4">
+      <div class="row g-3 my-2"></div>
+
+      <div class="row my-5">
+        <!-- <h3 class="fs-4 mb-3 text-white">Users List</h3> -->
+
+        <div class="row">
+          <div class="d-flex align-items-center">
+            <div class="d-flex">
+              <input
+                type="text"
+                [(ngModel)]="searchTerm"
+                placeholder="Search Users"
+                class="search-input mb-2"
+              />
+            </div>
+
+            <div
+              class="d-flex justify-content-center ms-3 mb-2"
+              style="height: 45px"
+            >
+              <select
+                [(ngModel)]="roleFilter"
+                class="form-control"
+                style="width: 200px"
+              >
+                <option value="">Select a role to filter</option>
+                <option *ngFor="let role of roles" [value]="role.name">
+                  {{ role.name }}
+                </option>
+              </select>
+            </div>
+
+         
+          </div>
+
+          <table class="table bg-white rounded shadow-sm table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Username</th>
+                <th scope="col">Email</th>
+                <th scope="col">Creation Date</th>
+                <th scope="col">Activated</th>
+                <th scope="col">Banned</th>
+             
+                <th scope="col">Roles</th>
+                
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container>
+                <tr *ngFor="let u of filterUsers()">
+                  <!-- Check if searchTerm is empty or if the product matches the search term -->
+                  <ng-container>
+                    <td>{{ u.username }}</td>
+                    <td>{{ u.email }}</td>
+                    <td>{{ u.creationDate | date }}</td>
+                    <td>{{ u.activated ? "Yes" : "No" }}</td>
+                    <td>{{ u.banned ? "Yes" : "No" }}</td>
+                    
+                    <div *ngFor="let role of u.roles">
+                      {{ role.name }}
+                    </div>
+                
+                    <td>
+                      <a
+                        class="btn btn-danger"
+                        style="margin-left: 10px"
+                        (click)="confirmDelete(u.id)"
+                        >delete</a
+                      >
+                      or
+                      <button
+                        class="btn btn-info"
+                        style="margin-left: 10px"
+                        (click)="editUser(u.id)"
+                      >
+                        Edit
+                      </button>
+                    </td>
+                  </ng-container>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /#page-content-wrapper -->

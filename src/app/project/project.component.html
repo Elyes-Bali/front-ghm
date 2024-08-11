@@ -1,0 +1,194 @@
+<div [ngClass]="status ? 'toggled' : ''" class="d-flex" id="wrapper">
+  <!-- Sidebar -->
+  <div class="bg-white" id="sidebar-wrapper">
+    <div
+      class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"
+    >
+      <i class="fas fa-user-secret me-2"></i>Admin
+    </div>
+    <div class="list-group list-group-flush my-3">
+      <a *ngIf="isLoggedIn && isUserRoleAdmin()"
+      href="/listUser"
+      class="list-group-item list-group-item-action bg-transparent second-text active"
+      ><i class="fas fa-user me-2"></i>Users</a
+    >
+    <a *ngIf="isLoggedIn && isUserRoleAdmin()"
+      href="/project"
+      class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+      ><i class="fas fa-area-chart"></i> Projects</a
+    >
+    <a *ngIf="isLoggedIn && isUserRoleManager()"
+      href="/task"
+      class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+      ><i class="fas fa-shopping-cart me-2"></i>Tasks</a
+    >
+    <a
+        *ngIf="isLoggedIn && isUserRoleManager()"
+        href="/alltasks"
+        class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+        ><i class="fas fa-shopping-cart me-2"></i>All Tasks</a
+      >
+    <a *ngIf="isLoggedIn && isUserRoleEmployer()"
+    href="/mytask"
+    class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+    ><i class="fas fa-shopping-cart me-2"></i>My Tasks</a
+  >
+      <hr />
+      <h4 class="text-center">Our Technologies</h4>
+      <a
+        class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+        >Angular</a
+      >
+      <a
+        class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+        >React Js</a
+      >
+      <a
+        class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+        >C#</a
+      >
+      <a
+        class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+        >C++</a
+      >
+      <a
+        class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+        >Machine Learning (AI)</a
+      >
+      <a
+        class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+      >
+        Flutter</a
+      >
+      <a
+        class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+        >DevOps</a
+      >
+    </div>
+  </div>
+  <!-- /#sidebar-wrapper -->
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
+      <div class="d-flex align-items-center">
+        <i
+          class="fas fa-align-left primary-text fs-4 me-3"
+          (click)="addToggle()"
+          id="menu-toggle"
+        ></i>
+        <h2 class="fs-2 m-0">Dashboard</h2>
+      </div>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </nav>
+
+    <div class="container mt-4 mb-4">
+      <!-- Form to create new project -->
+      <div class="card mt-4">
+        <div class="card-body">
+          <h5 class="card-title">Create a New Project</h5>
+          <input
+            #projectName
+            type="text"
+            class="form-control mb-2"
+            placeholder="Project Name"
+          />
+          <textarea
+            #projectDesc
+            class="form-control mb-2"
+            rows="3"
+            placeholder="Project Description"
+          ></textarea>
+
+          <button
+            class="btn btn-primary"
+            (click)="createProject(projectName.value, projectDesc.value)"
+          >
+            Create Project
+          </button>
+        </div>
+      </div>
+
+      <!-- Form to assign manager to project -->
+      <div class="card mt-4">
+        <div class="card-body">
+          <h5 class="card-title">Assign Manager to a Project</h5>
+          <div class="form-group">
+            <label for="selectedProject">Select a Project:</label>
+            <select
+              id="selectedProject"
+              class="form-control mb-2"
+              #selectedProject
+            >
+              <option *ngFor="let project of projects" [value]="project.id">
+                {{ project.name }}
+              </option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="selectedManager">Select a Manager:</label>
+            <select
+              id="selectedManager"
+              class="form-control mb-2"
+              #selectedManager
+            >
+              <option *ngFor="let manager of managers" [value]="manager.id">
+                {{ manager.username }}
+              </option>
+            </select>
+          </div>
+          <button
+            class="btn btn-primary"
+            (click)="
+              assignManagerToProject(
+                selectedProject.value,
+                selectedManager.value
+              )
+            "
+          >
+            Assign Manager
+          </button>
+        </div>
+      </div>
+
+      <h2 class="mb-4">Featured Projects</h2>
+
+      <div class="scrollable-container">
+        <div class="card mb-4" *ngFor="let project of projects; let i = index">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <h5 class="card-title">{{ project.name }}</h5>
+              </div>
+              <div>
+                <button class="btn btn-info btn-sm" (click)="toggleDetails(i)">
+                  Details
+                </button>
+                <button
+                  class="btn btn-danger btn-sm"
+                  (click)="deleteProject(project.id)"
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+            <div *ngIf="project.showDetails">
+              <p class="mt-2">{{ project.description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

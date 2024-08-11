@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="">GHM</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav  ms-auto">
+          
+          
+          
+          <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn && isUserRoleAdmin()">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="listUser" routerLinkActive="active-link">Dash</a>
+          </li>
+        </ul>
+     
+           <!-- <li class="nav-item">
+            <a class="nav-link" routerLink="listUser" routerLinkActive="active-link">Users</a>
+          </li>  -->
+
+          <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+            <li class="nav-item">
+              <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
+            
+          </ul>
+
+          <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+            <li class="nav-item" >
+              <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
+            </li>
+            
+            <li class="nav-item">
+              <a href class="nav-link" (click)="logout()">LogOut</a>
+            </li>
+          </ul>
+          <!--
+          <li class="nav-item">
+            <a class="nav-link" routerLink="contact" routerLinkActive="active-link">Contact</a>
+          </li> -->
+
+          <!-- <li class="nav-item">
+            <a class="nav-link" routerLink="cart" routerLinkActive="active-link"><i class="bi bi-cart"></i></a>
+          </li> -->
+          <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="login" routerLinkActive="active-link">Log In</a>
+          </li>
+          </ul>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  

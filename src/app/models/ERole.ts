@@ -1,0 +1,4 @@
+export enum ERole {
+  ROLE_EMPLOYER = 'ROLE_EMPLOYER',
+  ROLE_MANAGER =  'ROLE_MANAGER'
+}

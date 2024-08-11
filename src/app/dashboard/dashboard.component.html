@@ -1,0 +1,90 @@
+<div [ngClass]="status ? 'toggled' : ''" class="d-flex" id="wrapper">
+  <!-- Sidebar -->
+  <div class="bg-white" id="sidebar-wrapper">
+    <div
+      class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"
+    >
+      <i class="fas fa-user-secret me-2"></i>Admin
+    </div>
+    <div class="list-group list-group-flush my-3">
+      <a
+        href="/listUser"
+        class="list-group-item list-group-item-action bg-transparent second-text active"
+        ><i class="fas fa-user me-2"></i>Users</a
+      >
+      <a
+        href="/project"
+        class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+        ><i class="fas fa-area-chart"></i> Projects</a
+      >
+      <a
+        routerLink="/task"
+        class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+        ><i class="fas fa-shopping-cart me-2"></i>Tasks</a
+      >
+      <a
+        routerLink="/mytask"
+        class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+        ><i class="fas fa-shopping-cart me-2"></i>My Tasks</a
+      >
+      <hr />
+      <h4 class="text-center">Our Technologies</h4>
+      <a
+        class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+        >Angular</a
+      >
+      <a
+        class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+        >React Js</a
+      >
+      <a
+        class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+        >C#</a
+      >
+      <a
+        class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+        >C++</a
+      >
+      <a
+        class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+        >Machine Learning (AI)</a
+      >
+      <a
+        class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+      >
+        Flutter</a
+      >
+      <a
+        class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+        >DevOps</a
+      >
+    </div>
+  </div>
+  <!-- /#sidebar-wrapper -->
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
+      <div class="d-flex align-items-center">
+        <i
+          class="fas fa-align-left primary-text fs-4 me-3"
+          (click)="addToggle()"
+          id="menu-toggle"
+        ></i>
+        <h2 class="fs-2 m-0">Dashboard</h2>
+      </div>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </nav>
+  </div>
+</div>

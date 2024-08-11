@@ -1,0 +1,62 @@
+<div class="profile-settings">
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="sidebar">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <button (click)="onSubmit()" class="btn btn-primary btn-home">Go to Dashboard</button>
+            </li>
+           
+            <!-- Add other menu items here -->
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-9">
+        <div class="profile-content">
+          <h1 class="profile-title">My Profile</h1>
+          <p class="profile-subtitle">Manage your profile settings</p>
+          <div class="profile-card shadow">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="profile-image text-center">
+                  <img src="https://static-00.iconduck.com/assets.00/user-icon-2048x2048-ihoxz4vq.png" alt="Profile" class="rounded-circle img-fluid">
+                  <br/>
+                  <br/>
+                  <li *ngFor="let role of user.roles" class="profile-roles-item badge bg-danger me-1">{{ role.name }}</li>
+                </div>
+              </div>
+              <div class="col-md-8">
+                <form>
+                  <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" class="form-control" id="firstName" value="{{ user.username }}">
+                  </div>
+                  <div class="form-group mt-3">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" value="{{ user.lastName }}">
+                  </div>
+                  <div class="form-group mt-3">
+                    <label for="email">Email Address</label>
+                    <input type="email" class="form-control" id="email" value="{{ user.email }}" readonly>
+                  </div>
+                  <div class="form-group mt-3">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" class="form-control" id="phone" value="{{ user.phone }}">
+                  </div>
+                  <button class="btn btn-outline-primary mt-4" type="submit">Update</button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="profile-side-note text-center mt-4">
+           <br>
+           <br>
+           <br>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,161 @@
+.task-section {
+  background: #f9f9f9; /* Light background to match the white dashboard */
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  color: #333; /* Darker text color for contrast */
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  margin-bottom: 10px;
+  background: #ffffff; /* White background for task items */
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Softer shadow */
+}
+
+.task-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  color: #333; /* Darker text for better readability */
+}
+
+.task-description {
+  font-size: 1.2rem;
+}
+
+.task-state {
+  font-size: 0.9rem;
+  color: #007bff; /* Blue color for state text */
+}
+
+.task-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.task-button {
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 0.9rem;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.not-completed {
+  background: #ff4c4c;
+}
+
+.not-completed:hover {
+  background: #e53e3e;
+}
+
+.ongoing {
+  background: #ff9800;
+}
+
+.ongoing:hover {
+  background: #fb8c00;
+}
+
+.finished {
+  background: #4caf50;
+}
+
+.finished:hover {
+  background: #43a047;
+}
+
+
+
+
+
+#wrapper {
+  overflow-x: hidden;
+  position: relative;
+  background: linear-gradient(115deg, #ebebeb 57%, #ebebeb 50%);
+  
+}
+
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin 0.25s ease-out;
+  -moz-transition: margin 0.25s ease-out;
+  -o-transition: margin 0.25s ease-out;
+  transition: margin 0.25s ease-out;
+  
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+
+}
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+
+  height: 56.3rem;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+  
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+#menu-toggle {
+  cursor: pointer;
+}
+
+.list-group-item {
+  border: none;
+  padding: 20px 30px;
+}
+
+.list-group-item.active {
+  background-color: transparent;
+  color: var(--main-text-color);
+  font-weight: bold;
+  border: none;
+}
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+}
+

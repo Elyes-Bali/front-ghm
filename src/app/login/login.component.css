@@ -1,0 +1,184 @@
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #ff8a75 10%, #94f8fc 100%);
+}
+
+.login-card {
+  width: 350px;
+  padding: 25px;
+  background-color: white;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  transition: all 0.3s ease-in-out;
+}
+
+.login-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+.login-title {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 20px;
+  border: 2px solid #ccc;
+  border-radius: 30px;
+  margin: 8px 0;
+  transition: border 0.3s ease;
+}
+
+.form-group input:focus {
+  border-color: #ff917e;
+}
+
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkbox-container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  font-size: 14px;
+  user-select: none;
+}
+
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+  background-color: #db4e23;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.checkbox-container .checkmark:after {
+  top: 6px;
+  left: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+
+.forgot-link {
+  color: #ff7044;
+}
+
+.login-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #FF5722;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #E64120;
+}
+
+.social-login p {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.social-button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 30px;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.google {
+  background-color: #DB4437;
+}
+
+.google:hover {
+  background-color: #BF362D;
+}
+
+.apple {
+  background-color: #000;
+}
+
+.apple:hover {
+  background-color: #333;
+}
+
+.signup-link {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.signup-link a {
+  color: #FF7EB3;
+  transition: color 0.3s ease;
+}
+
+.signup-link a:hover {
+  color: #E64120;
+}
+
+.alert-container {
+  margin-top: 20px;
+}
+
+.alert {
+  padding: 15px;
+  margin-top: 10px;
+  border-radius: 5px;
+  color: white;
+}
+
+.alert-danger {
+  background-color: #f44336;
+}
+
+.alert-info {
+  background-color: #2196f3;
+}
+
